@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  nestjs_postgres_test:
+    image: postgres:alpine
+    container_name: test_postgres
+    restart: 'no'
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U $POSTGRES_USER']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    env_file:
+      - .env.test
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - '5444:5432' # Different port to avoid conflict with the development environment
+    volumes:
+      - nestjs_postgres_test:/var/lib/postgresql/data
+
+  nestjs_redis_test:
+    image: redis:alpine
+    container_name: test_redis
+    ports:
+      - '6380:6379' # Different port to avoid conflict with the development environment
+    volumes:
+      - nestjs_redis_test:/data
+
+networks:
+  default:
+    name: nestjs_starter_test
+
+volumes:
+  nestjs_postgres_test:
+  nestjs_redis_test:
