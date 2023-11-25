@@ -1,4 +1,5 @@
 export default () => ({
+  host: process.env.HOST,
   environment: process.env.NODE_ENV || `development`,
   redis: {
     host: process.env.REDIS_HOST,
@@ -6,5 +7,5 @@ export default () => ({
     username: process.env.REDIS_USERNAME,
     password: process.env.REDIS_PASSWORD,
   },
-  host: process.env.HOST,
+  apiKey: process.env.API_KEY,
 });
