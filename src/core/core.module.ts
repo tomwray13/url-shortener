@@ -16,6 +16,7 @@ import { CacheService } from './cache/cache.service';
 @Module({
   imports: [
     ConfigModule.forRoot({
+      isGlobal: true,
       load: [config],
     }),
     DatabaseModule,
