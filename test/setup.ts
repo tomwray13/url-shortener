@@ -38,4 +38,4 @@ afterAll(async () => {
   await app.close();
 });
 
-export { server };
+export { server, app };
