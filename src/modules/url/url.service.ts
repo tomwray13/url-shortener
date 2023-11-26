@@ -17,6 +17,7 @@ export class UrlService {
 
   onModuleInit() {
     this.host = this.configService.getOrThrow(`host`);
+    console.log(`on module init`, this.host);
   }
 
   async create(createUrlDto: CreateUrlDto) {
