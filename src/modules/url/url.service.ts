@@ -8,12 +8,14 @@ import { FilterUrlsDto } from './dto/filter-urls.dto';
 
 @Injectable()
 export class UrlService {
-  private readonly host: string;
+  private host: string;
   constructor(
     private readonly uidService: UidService,
     private readonly databaseService: DatabaseService,
     private readonly configService: ConfigService,
-  ) {
+  ) {}
+
+  onModuleInit() {
     this.host = this.configService.getOrThrow(`host`);
   }
 
