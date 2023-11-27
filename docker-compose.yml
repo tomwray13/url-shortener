@@ -13,7 +13,7 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - url_shortener_postgres_data:/var/lib/postgresql/data
 
   url_shortener_redis: # Needs updating
     image: redis:alpine
@@ -21,12 +21,12 @@ services:
     ports:
       - '6379:6379'
     volumes:
-      - redis_data:/data
+      - url_shortener_redis_data:/data
 
 networks:
   default:
     name: url_shortener # Needs updating
 
 volumes:
-  postgres_data:
-  redis_data:
+  url_shortener_postgres_data:
+  url_shortener_redis_data:
